@@ -3,7 +3,7 @@
 pub trait Bits: Clone + Copy {
     fn zero() -> Self;
     fn from_pow(exp: u32) -> Self;
-    fn num_bits() -> u8;
+    fn num_bits() -> usize;
 }
 
 impl Bits for u8 {
@@ -15,7 +15,7 @@ impl Bits for u8 {
         2u8.pow(exp)
     }
 
-    fn num_bits() -> u8 {
+    fn num_bits() -> usize {
         8
     }
 }
@@ -33,7 +33,7 @@ mod impl_bitflags {
             BitFlags8(2u8.pow(exp))
         }
 
-        fn num_bits() -> u8 {
+        fn num_bits() -> usize {
             8
         }
     }

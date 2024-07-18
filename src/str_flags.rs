@@ -10,7 +10,7 @@ use std::collections::HashMap;
 #[derive(Debug)]
 pub struct StrFlags<T: Bits> {
     inner: HashMap<String, T>,
-    count: u8,
+    count: usize,
     excess: usize,
     duplicates: usize,
 }
@@ -18,7 +18,7 @@ pub struct StrFlags<T: Bits> {
 impl<T: Bits> StrFlags<T> {
     /// Creates a new instance.
     pub fn new() -> Self {
-        let mut inner = HashMap::with_capacity(8);
+        let mut inner = HashMap::with_capacity(T::num_bits() + 1);
         inner.insert("NONE".into(), T::zero());
         Self {
             inner,
@@ -66,18 +66,18 @@ impl<T: Bits> StrFlags<T> {
     pub fn contains(&self, string: &str) -> bool {
         self.inner.contains_key(string)
     }
-    /// Returns number of unique flags issued by the structure.
-    pub fn count(&self) -> u8 {
+    /// Returns number of unique string/flag pairs in the structure, _excluding_ `("NONE": 0)`.
+    pub fn count(&self) -> usize {
         self.count
     }
-    /// Returns number of duplicate strings stored in the structure.
+    /// Returns number of duplicate strings pairs added to the structure.
     pub fn duplicates(&self) -> usize {
         self.duplicates
     }
-    /// Returns number of unique strings stored in the structure.
-    pub fn len(&self) -> usize {
-        self.inner.len()
-    }
+    /// Returns number of excess strings added to the structure.
+    pub fn excess(&self) -> usize {
+        self.excess
+    } 
 }
 
 impl<T: Bits> std::ops::Index<&String> for StrFlags<T> {
