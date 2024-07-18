@@ -12,6 +12,8 @@
 ## Testing
 
 - all types: `u8` to `u128`, with `Bits` trait and `BitFlags` variant for all
+- `#[should_panic]` on OOB `from_pow()` values
 - object creation
 - duplicates
 - excess
+
