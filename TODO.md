@@ -4,15 +4,12 @@
 
 - `StrToFlags` (Vec): uses a `Vec` instead of a `HashMap`
   - alphabetical sorting and indexing for faster index retrieval
-
-## Readme
-
-- `Usage` with features
+- `StrToEnum` (HashMap): uses a `HashMap` just like `StrFlags`
+  - alphabetical sorting and indexing for faster index retrieval
+- `StrToEnum` (Vec): uses a `Vec` instead of a `HashMap`
+  - alphabetical sorting and indexing for faster index retrieval
 
 ## Testing
 
-- all types: `u8` to `u128`, with `Bits` trait and `BitFlags` variant for all
 - `#[should_panic]` on OOB `from_pow()` values
-- object creation
-- duplicates
-- excess
+- `.get()` method

@@ -58,7 +58,7 @@ impl<T: Bits> StrFlags<T> {
             Some(self.inner[s])
         }
     }
-    /// An iterator visiting all key-value pairs in arbitrary order.
+    /// Returns an iterator visiting all key-value pairs in arbitrary order.
     pub fn iter(&self) -> Iter<String, T> {
         self.inner.iter()
     }
