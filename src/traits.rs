@@ -34,7 +34,6 @@ impl Bits for u16 {
     }
 }
 
-
 impl Bits for u32 {
     fn zero() -> Self {
         0u32
@@ -49,11 +48,26 @@ impl Bits for u32 {
     }
 }
 
+impl Bits for u64 {
+    fn zero() -> Self {
+        0u64
+    }
+
+    fn from_pow(exp: u32) -> Self {
+        2u64.pow(exp)
+    }
+
+    fn num_bits() -> usize {
+        64
+    }
+}
+
 #[cfg(feature = "bitflags-support")]
 mod impl_bitflags {
     use arctan_bitflags::BitFlags8;
     use arctan_bitflags::BitFlags16;
     use arctan_bitflags::BitFlags32;
+    use arctan_bitflags::BitFlags64;
 
     impl super::Bits for BitFlags8 {
         fn zero() -> Self {
@@ -94,6 +108,20 @@ mod impl_bitflags {
 
         fn num_bits() -> usize {
             32
+        }
+    }
+
+    impl super::Bits for BitFlags64 {
+        fn zero() -> Self {
+            BitFlags64::empty()
+        }
+
+        fn from_pow(exp: u32) -> Self {
+            BitFlags64(2u64.pow(exp))
+        }
+
+        fn num_bits() -> usize {
+            64
         }
     }
 }
