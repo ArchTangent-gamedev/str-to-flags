@@ -12,4 +12,3 @@
 ## Testing
 
 - `#[should_panic]` on OOB `from_pow()` values
-- `.get()` method

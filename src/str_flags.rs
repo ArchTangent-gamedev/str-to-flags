@@ -1,4 +1,4 @@
-//! String to flag tracker for 8-bit values.
+//! String to flag tracker for 8 to 128-bit values.
 
 use crate::traits::Bits;
 use std::collections::hash_map::Iter;
@@ -62,6 +62,17 @@ impl<T: Bits> StrFlags<T> {
     pub fn iter(&self) -> Iter<String, T> {
         self.inner.iter()
     }
+    /// Returns a list of all `(String, Flag)` pairs, sorted by flag.
+    pub fn sorted(&self) -> Vec<(String, T)> {
+        let mut pairs = self
+            .inner
+            .iter()
+            .map(|p| (p.0.clone(), p.1.clone()))
+            .collect::<Vec<_>>();
+        pairs.sort_by(|p1, p2| p1.1.cmp(&p2.1));
+
+        pairs
+    }
     /// Returns `true` if the struct contains the given string.
     pub fn contains(&self, string: &str) -> bool {
         self.inner.contains_key(string)
@@ -77,13 +88,13 @@ impl<T: Bits> StrFlags<T> {
     /// Returns number of excess strings added to the structure.
     pub fn excess(&self) -> usize {
         self.excess
-    } 
+    }
 }
 
-impl<T: Bits> std::ops::Index<&String> for StrFlags<T> {
+impl<T: Bits> std::ops::Index<&str> for StrFlags<T> {
     type Output = T;
 
-    fn index(&self, index: &String) -> &Self::Output {
+    fn index(&self, index: &str) -> &Self::Output {
         &self.inner.index(index)
     }
 }

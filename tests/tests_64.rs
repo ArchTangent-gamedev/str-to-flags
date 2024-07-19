@@ -58,6 +58,11 @@ fn u64_general() {
     let f4 = StrFlags::<u64>::from_slice(&DATA4);
     let f5 = StrFlags::<u64>::from_slice(&DATA5);
 
+    // Indexing
+    assert_eq!(f2["a1"], 1);
+    assert_eq!(f2.get("p3"), Some(&2u64.pow(63)));
+    assert_eq!(f2.get("q3"), None);
+
     // Count
     let count1 = f1.count();
     let count2 = f2.count();
@@ -105,6 +110,11 @@ fn flags64_general() {
     let f3 = StrFlags::<BitFlags64>::from_slice(&DATA3);
     let f4 = StrFlags::<BitFlags64>::from_slice(&DATA4);
     let f5 = StrFlags::<BitFlags64>::from_slice(&DATA5);
+
+    // Indexing
+    assert_eq!(f2["a1"], BitFlags64(1));
+    assert_eq!(f2.get("p3"), Some(&BitFlags64(2u64.pow(63))));
+    assert_eq!(f2.get("q3"), None);
 
     // Count
     let count1 = f1.count();

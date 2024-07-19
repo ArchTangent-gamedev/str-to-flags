@@ -19,6 +19,11 @@ fn u8_general() {
     let f4 = StrFlags::<u8>::from_slice(&DATA4);
     let f5 = StrFlags::<u8>::from_slice(&DATA5);
 
+    // Indexing
+    assert_eq!(f1["a"], 1);
+    assert_eq!(f1.get("h"), Some(&2u8.pow(7)));
+    assert_eq!(f1.get("i"), None);
+
     // Count
     let count1 = f1.count();
     let count2 = f2.count();
@@ -66,6 +71,11 @@ fn flags8_general() {
     let f3 = StrFlags::<BitFlags8>::from_slice(&DATA3);
     let f4 = StrFlags::<BitFlags8>::from_slice(&DATA4);
     let f5 = StrFlags::<BitFlags8>::from_slice(&DATA5);
+
+    // Indexing
+    assert_eq!(f1["a"], BitFlags8(1));
+    assert_eq!(f1.get("h"), Some(&BitFlags8(2u8.pow(7))));
+    assert_eq!(f1.get("i"), None);
     
     // Count
     let count1 = f1.count();

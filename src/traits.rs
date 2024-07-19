@@ -1,6 +1,6 @@
 //! Traits for the `str-to-flags` crate.
 
-pub trait Bits: Clone + Copy {
+pub trait Bits: Clone + Copy + Eq + Ord {
     fn zero() -> Self;
     fn from_pow(exp: u32) -> Self;
     fn num_bits() -> usize;

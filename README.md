@@ -1,6 +1,8 @@
 # str-to-flags
 Types to convert lists of strings into a bitflag representation.
 
+Designed to work with the `arctan-bitflags` crate [GIT](https://github.com/ArchTangent/arctan-bitflags).
+
 ## Usage
 
 ```toml
@@ -8,7 +10,7 @@ Types to convert lists of strings into a bitflag representation.
 str-to-flags = { git = "https://github.com/ArchTangent-gamedev/str-to-flags.git", branch = "main" }
 ```
 
-## Examples
+## Example
 
 ```rust
 let planets_str = [

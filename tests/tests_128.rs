@@ -78,6 +78,11 @@ fn u128_general() {
     let f4 = StrFlags::<u128>::from_slice(&DATA4);
     let f5 = StrFlags::<u128>::from_slice(&DATA5);
 
+    // Indexing
+    assert_eq!(f2["a1"], 1);
+    assert_eq!(f2.get("h6"), Some(&2u128.pow(127)));
+    assert_eq!(f2.get("i6"), None);
+
     // Count
     let count1 = f1.count();
     let count2 = f2.count();
@@ -125,6 +130,11 @@ fn flags128_general() {
     let f3 = StrFlags::<BitFlags128>::from_slice(&DATA3);
     let f4 = StrFlags::<BitFlags128>::from_slice(&DATA4);
     let f5 = StrFlags::<BitFlags128>::from_slice(&DATA5);
+
+    // Indexing
+    assert_eq!(f2["a1"], BitFlags128(1));
+    assert_eq!(f2.get("h6"), Some(&BitFlags128(2u128.pow(127))));
+    assert_eq!(f2.get("i6"), None);
 
     // Count
     let count1 = f1.count();

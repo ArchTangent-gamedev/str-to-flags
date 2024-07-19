@@ -42,6 +42,11 @@ fn u16_general() {
     let f4 = StrFlags::<u16>::from_slice(&DATA4);
     let f5 = StrFlags::<u16>::from_slice(&DATA5);
 
+    // Indexing
+    assert_eq!(f1["a"], 1);
+    assert_eq!(f1.get("h"), Some(&2u16.pow(7)));
+    assert_eq!(f1.get("m"), None);
+
     // Count
     let count1 = f1.count();
     let count2 = f2.count();
@@ -89,6 +94,11 @@ fn flags16_general() {
     let f3 = StrFlags::<BitFlags16>::from_slice(&DATA3);
     let f4 = StrFlags::<BitFlags16>::from_slice(&DATA4);
     let f5 = StrFlags::<BitFlags16>::from_slice(&DATA5);
+
+    // Indexing
+    assert_eq!(f1["a"], BitFlags16(1));
+    assert_eq!(f1.get("h"), Some(&BitFlags16(2u16.pow(7))));
+    assert_eq!(f1.get("m"), None);
 
     // Count
     let count1 = f1.count();
