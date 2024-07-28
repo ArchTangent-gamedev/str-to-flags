@@ -3,7 +3,7 @@ name = "str-to-flags"
 version = "0.10.1"
 edition = "2021"
 authors = ["ArchTangent"]
-license = "Apache-2.0"
+license = "MIT OR Apache-2.0"
 
 [dependencies]
 arctan-bitflags = { git = "https://github.com/ArchTangent/arctan-bitflags.git", branch = "main", optional = true }
